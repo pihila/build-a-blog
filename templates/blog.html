@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+<!doctype html>
+<html>
+    <head>
+        <title>add a new  blog</title>
+    </head>
+<body>
+ 
+
+    {% block content %}
+    {% if blogs|length == 0 %}
+    <p>No blogs added yet.</br>Add a new blog now!</p>
+    {% else %}
+
+        <ul>
+            {% for blog in blogs %}
+            <li><h2><a href="/print_blog?id={{blog.id}}"  >{{blog.title}}</a></h2></br>
+                <small>{{blog.body}}</small>
+                <form action="/delete-blog" method="POST" style="display:inline-block;">
+                    <input type="hidden" name="blog-id" value="{{blog.id}}" />
+                    <input type="submit" value="Delete!" />
+                </form>
+                <hr />
+            </li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+
+
+    {% endblock %}
+
+</body>
+</html>

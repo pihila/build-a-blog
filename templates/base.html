@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+            <title>add a new  blog</title>
+        </head>
+    <body>
+            <div>
+                    <a href='/'>Main Blog Page</a>
+                
+                    <a href='/newpost'>Add A Blog Entry</a>
+                </div>
+        <h1><center>Add A Blog!</center></h1>
+
+        <style>
+            .error {
+                color: red;
+            }
+        </style>
+    </head>
+<body>
+
+        
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% for category, message in messages %}
+            <li class="error">{{message}}</li>
+        {% endfor %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
